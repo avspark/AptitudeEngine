@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AptitudeEngine.cs" />
+    <Compile Include="Camera.cs" />
     <Compile Include="FrameRender.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

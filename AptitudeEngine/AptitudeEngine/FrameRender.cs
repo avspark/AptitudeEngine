@@ -54,6 +54,13 @@ namespace AptitudeEngine
         {
             Clear();
 
+            GL.Begin(PrimitiveType.Quads);
+            GL.Vertex2(0, 0);
+            GL.Vertex2(0, 100);
+            GL.Vertex2(100, 100);
+            GL.Vertex2(100, 0);
+            GL.End();
+
             EndFrame();
         }
 
