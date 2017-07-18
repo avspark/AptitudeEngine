@@ -1,2 +1,2 @@
 # AptitudeEngine
-A 2D RPG Engine made by KDT.
+A 2D RPG Engine.
