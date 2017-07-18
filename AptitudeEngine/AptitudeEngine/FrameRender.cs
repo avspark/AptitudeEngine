@@ -18,9 +18,9 @@ namespace AptitudeEngine
             {
                 float[] bkColor = new float[3];
                 GL.GetFloat(GetPName.ColorClearValue, bkColor);
-                int red = int.Parse((decimal.Multiply(255, (decimal)bkColor[0])).ToString("0"));
-                int green = int.Parse((decimal.Multiply(255, (decimal)bkColor[1])).ToString("0"));
-                int blue = int.Parse((decimal.Multiply(255, (decimal)bkColor[2])).ToString("0"));
+                int red = int.Parse((255f * bkColor[0]).ToString("0"));
+                int green = int.Parse((255f * bkColor[1]).ToString("0"));
+                int blue = int.Parse((255f * bkColor[2]).ToString("0"));
                 return Color.FromArgb(red, green, blue);
             }
             set
