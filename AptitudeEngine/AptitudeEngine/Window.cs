@@ -11,7 +11,7 @@ namespace AptitudeEngine
     {
         public Window(int x, int y) : base (x, y, GraphicsMode.Default, "Aptitude Engine", GameWindowFlags.FixedWindow, DisplayDevice.Default)
         {
-
+            FrameRender.ClearColor = Color.FromArgb(13, 15, 50);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -28,11 +28,9 @@ namespace AptitudeEngine
         {
             base.OnRenderFrame(e);
 
-            GL.ClearColor(Color.CornflowerBlue);
-            GL.Clear(ClearBufferMask.ColorBufferBit);
+            FrameRender.RenderFrame(e);
 
-
-            GL.Flush();
+            this.Title = "Clear Color: RGB(" + FrameRender.ClearColor.R + "," + FrameRender.ClearColor.G + ","+ FrameRender.ClearColor.B + ")";
             this.SwapBuffers();
         }
     }
