@@ -6,7 +6,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace AptitudeEngine
 {
-    public static class FrameRender
+    public static class Frame
     {
         #region Coloring
         /// <summary>
