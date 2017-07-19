@@ -13,7 +13,7 @@ namespace AptitudeEngine
 
         public Window(int x, int y) : base (x, y, GraphicsMode.Default, "Aptitude Engine", GameWindowFlags.FixedWindow, DisplayDevice.Default)
         {
-            FrameRender.ClearColor = Color.FromArgb(13, 15, 50);
+            Frame.ClearColor = Color.FromArgb(13, 15, 50);
             camera1 = new Camera(x, y, -(x/2), -(y/2));
             camera2 = new Camera(x, y, -100, -100);
             camera1.install();
