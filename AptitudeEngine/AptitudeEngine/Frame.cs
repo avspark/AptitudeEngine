@@ -3,6 +3,7 @@ using System.Drawing;
 
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 
 namespace AptitudeEngine
 {
@@ -50,15 +51,25 @@ namespace AptitudeEngine
         }
         #endregion
 
+        #region States
+        public static KeyboardState KeyboardState
+        {
+            get
+            {
+                return Keyboard.GetState();
+            }
+        }
+        #endregion
+
         public static void RenderFrame(FrameEventArgs frameArgs)
         {
             Clear();
 
             GL.Begin(PrimitiveType.Quads);
             GL.Vertex2(0, 0);
-            GL.Vertex2(0, 100);
-            GL.Vertex2(100, 100);
-            GL.Vertex2(100, 0);
+            GL.Vertex2(0, 25);
+            GL.Vertex2(25, 25);
+            GL.Vertex2(25, 0);
             GL.End();
 
             EndFrame();

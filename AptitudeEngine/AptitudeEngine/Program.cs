@@ -7,7 +7,7 @@ namespace AptitudeEngine
         static void Main(string[] args)
         {
             AptitudeEngine ae = new AptitudeEngine();
-            ae.StartWindow(500, 500, OpenTK.VSyncMode.On);
+            ae.StartWindow(750, 750, OpenTK.VSyncMode.On);
         }
     }
 }

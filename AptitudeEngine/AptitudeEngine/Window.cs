@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 using OpenTK;
 using OpenTK.Graphics;
@@ -9,16 +10,48 @@ namespace AptitudeEngine
 {
     public class Window : GameWindow
     {
-        private Camera camera1, camera2;
+        #region CameraManagement
+        public List<Camera> Cameras = new List<Camera>();
+
+        private int _CurrentCamera = 0;
+        public int CurrentCamera
+        {
+            get
+            {
+                return _CurrentCamera;
+            }
+            set
+            {
+                if (Cameras.Count == 0)
+                {
+                    return;
+                }
+
+                if (value > Cameras.Count - 1)
+                {
+                    return;
+                }
+
+                Cameras[_CurrentCamera].Stop();
+                _CurrentCamera = value;
+                Cameras[_CurrentCamera].Start();
+            }
+        }
+
+        public void CreateCamera(float x, float y, float width, float height)
+        {
+            Camera c = new Camera(width, height, x, y);
+            Cameras.Add(c);
+        }
+        #endregion
 
         public Window(int x, int y) : base (x, y, GraphicsMode.Default, "Aptitude Engine", GameWindowFlags.FixedWindow, DisplayDevice.Default)
         {
             Frame.ClearColor = Color.FromArgb(13, 15, 50);
-            camera1 = new Camera(x, y, -(x/2), -(y/2));
-            camera2 = new Camera(x, y, -100, -100);
-            camera1.install();
 
-            Frame.ClearColor = Color.FromArgb(13, 15, 50);
+            CreateCamera(0, 0, 100, 100);
+            CreateCamera(0, 0, 75, 75);
+            CurrentCamera = 0;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -37,23 +70,15 @@ namespace AptitudeEngine
 
             Frame.RenderFrame(e);
 
-            camera1.move(1, 1);
-
-            var state = OpenTK.Input.Keyboard.GetState();
-
-            if (state[Key.L])
+            if (Frame.KeyboardState[Key.Number1])
             {
-                camera1.disable();
-                camera2.install();
+                CurrentCamera = 0;
             }
-
-            if(state[Key.K])
+            if (Frame.KeyboardState[Key.Number2])
             {
-                camera2.disable();
-                camera1.install();
+                CurrentCamera = 1;
             }
-
-            this.Title = "Clear Color: RGB(" + Frame.ClearColor.R + "," + Frame.ClearColor.G + ","+ Frame.ClearColor.B + ")";
+            
             this.SwapBuffers();
         }
     }

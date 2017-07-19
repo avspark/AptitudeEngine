@@ -3,53 +3,53 @@ using OpenTK.Graphics.OpenGL;
 
 namespace AptitudeEngine
 {
-    class Camera
+    public class Camera
     {
-        private Vector2 position;
-        private Matrix4 projection;
+        private Vector2 Position;
+        private Matrix4 Projection;
 
         private bool enabled = false;
 
         public Camera(float width, float height, float x, float y)
         {
-            projection = Matrix4.CreateOrthographic(width, height, 0, 100);
-            position = new Vector2(x, y);
+            Projection = Matrix4.CreateOrthographic(width, -height, 0, 100);
+            Position = new Vector2(x, y);
         }
 
-        public void setPosition(Vector2 pos)
+        public void SetPosition(Vector2 pos)
+        {
+            SetPosition(pos.X, pos.Y);
+        }
+
+        public void SetPosition(float x, float y)
         {
             if (!enabled) return;
-            this.position = pos;
-            GL.LoadMatrix(ref projection);
-            GL.Translate(new Vector3(pos.X, pos.Y, 0));
+            this.Position = new Vector2(x, y);
+            GL.LoadMatrix(ref Projection);
+            GL.Translate(new Vector3(x, y, 0));
         }
 
-        public void setPosition(float x, float y)
+        public void Move(float x, float y)
         {
-            setPosition(new Vector2(x, y));
+            SetPosition(Position.X + x, Position.Y + y);
         }
 
-        public void move(float x, float y)
-        {
-            setPosition(position.X + x, position.Y + y);
-        }
-
-        public void install()
+        public void Start()
         {
             enabled = true;
             GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadMatrix(ref projection);
-            setPosition(position);
+            GL.LoadMatrix(ref Projection);
+            SetPosition(Position);
         }
 
-        public void disable()
+        public void Stop()
         {
             enabled = false;
         }
 
-        public Matrix4 getProjectionMatrix()
+        public Matrix4 GetMatrix()
         {
-            return projection;
+            return Projection;
         }
     }
 }
