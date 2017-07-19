@@ -23,8 +23,8 @@ namespace AptitudeEngine
 
         public void SetPosition(float x, float y)
         {
-            if (!enabled) return;
             this.Position = new Vector2(x, y);
+            if (!enabled) return;
             GL.LoadMatrix(ref Projection);
             GL.Translate(new Vector3(x, y, 0));
         }
