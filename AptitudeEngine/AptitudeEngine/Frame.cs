@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -33,7 +34,7 @@ namespace AptitudeEngine
         /// <summary>
         /// This is the color used for drawing shapes and attaching to textures.
         /// </summary>
-        public static Color DrawColor
+        public static Color CurrentColor
         {
             get
             {
@@ -63,15 +64,26 @@ namespace AptitudeEngine
 
         public static void RenderFrame(FrameEventArgs frameArgs)
         {
+            //Clear Screen
             Clear();
 
-            GL.Begin(PrimitiveType.Quads);
-            GL.Vertex2(0, 0);
-            GL.Vertex2(0, 25);
-            GL.Vertex2(25, 25);
-            GL.Vertex2(25, 0);
-            GL.End();
+            Draw.SelectedVectors = new List<Vector2>()
+            {
+                new Vector2(-25,-25),
+                new Vector2(-25,25),
+                new Vector2(25,25),
+                new Vector2(25,-25)
+            };
+            Draw.SelectedColors = new List<Color>()
+            {
+                Color.Red,
+                Color.Green,
+                Color.Blue,
+                Color.Yellow
+            };
+            Draw.Quad();
 
+            //Finish and clean frame
             EndFrame();
         }
 

@@ -47,7 +47,8 @@ namespace AptitudeEngine
 
         public Window(int x, int y) : base (x, y, GraphicsMode.Default, "Aptitude Engine", GameWindowFlags.FixedWindow, DisplayDevice.Default)
         {
-            Frame.ClearColor = Color.FromArgb(13, 15, 50);
+            Frame.ClearColor = Color.CornflowerBlue;
+            Frame.CurrentColor = Color.DarkBlue;
 
             CreateCamera(0, 0, 100, 100);
             CreateCamera(0, 0, 75, 75);

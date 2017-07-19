@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AptitudeEngine.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Draw.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
