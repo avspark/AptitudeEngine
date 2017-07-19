@@ -17,6 +17,8 @@ namespace AptitudeEngine
             camera1 = new Camera(x, y, -(x/2), -(y/2));
             camera2 = new Camera(x, y, -100, -100);
             camera1.install();
+
+            Frame.ClearColor = Color.FromArgb(13, 15, 50);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -33,7 +35,7 @@ namespace AptitudeEngine
         {
             base.OnRenderFrame(e);
 
-            FrameRender.RenderFrame(e);
+            Frame.RenderFrame(e);
 
             camera1.move(1, 1);
 
@@ -51,8 +53,7 @@ namespace AptitudeEngine
                 camera1.install();
             }
 
-
-            this.Title = "Clear Color: RGB(" + FrameRender.ClearColor.R + "," + FrameRender.ClearColor.G + ","+ FrameRender.ClearColor.B + ")";
+            this.Title = "Clear Color: RGB(" + Frame.ClearColor.R + "," + Frame.ClearColor.G + ","+ Frame.ClearColor.B + ")";
             this.SwapBuffers();
         }
     }
