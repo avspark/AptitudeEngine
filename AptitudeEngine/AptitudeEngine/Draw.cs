@@ -12,14 +12,14 @@ namespace AptitudeEngine
         public static List<Vector2> SelectedVectors = new List<Vector2>();
         public static List<Color> SelectedColors = new List<Color>();
 
-        public static void Quad()
+        public static void Poly()
         {
             if (SelectedVectors.Count == 0 || SelectedColors.Count == 0)
             {
                 return;
             }
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(PrimitiveType.Polygon);
 
             Color loopColor = Color.White;
 

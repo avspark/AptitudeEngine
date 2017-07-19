@@ -13,7 +13,7 @@ namespace AptitudeEngine
         public Camera(float width, float height, float x, float y)
         {
             Projection = Matrix4.CreateOrthographic(width, -height, 0, 100);
-            Position = new Vector2(x, y);
+            Position = new Vector2(x, -y);
         }
 
         public void SetPosition(Vector2 pos)

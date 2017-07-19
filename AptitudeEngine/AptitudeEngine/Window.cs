@@ -48,10 +48,10 @@ namespace AptitudeEngine
         public Window(int x, int y) : base (x, y, GraphicsMode.Default, "Aptitude Engine", GameWindowFlags.FixedWindow, DisplayDevice.Default)
         {
             Frame.ClearColor = Color.CornflowerBlue;
-            Frame.CurrentColor = Color.DarkBlue;
 
             CreateCamera(0, 0, 100, 100);
             CreateCamera(0, 0, 75, 75);
+            CreateCamera(0, 50, 250, 250);
             CurrentCamera = 0;
         }
 
@@ -79,7 +79,11 @@ namespace AptitudeEngine
             {
                 CurrentCamera = 1;
             }
-            
+            if (Frame.KeyboardState[Key.Number3])
+            {
+                CurrentCamera = 2;
+            }
+
             this.SwapBuffers();
         }
     }

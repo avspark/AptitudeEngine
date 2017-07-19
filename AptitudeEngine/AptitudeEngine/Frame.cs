@@ -30,26 +30,6 @@ namespace AptitudeEngine
                 GL.ClearColor(value);
             }
         }
-
-        /// <summary>
-        /// This is the color used for drawing shapes and attaching to textures.
-        /// </summary>
-        public static Color CurrentColor
-        {
-            get
-            {
-                float[] bkColor = new float[3];
-                GL.GetFloat(GetPName.CurrentColor, bkColor);
-                int red = int.Parse((255f * bkColor[0]).ToString("0"));
-                int green = int.Parse((255f * bkColor[1]).ToString("0"));
-                int blue = int.Parse((255f * bkColor[2]).ToString("0"));
-                return Color.FromArgb(red, green, blue);
-            }
-            set
-            {
-                GL.Color4(value);
-            }
-        }
         #endregion
 
         #region States
@@ -70,8 +50,9 @@ namespace AptitudeEngine
             Draw.SelectedVectors = new List<Vector2>()
             {
                 new Vector2(-25,-25),
-                new Vector2(-25,25),
-                new Vector2(25,25),
+                new Vector2(-50,25),
+                new Vector2(0, 100),
+                new Vector2(50,25),
                 new Vector2(25,-25)
             };
             Draw.SelectedColors = new List<Color>()
@@ -79,9 +60,10 @@ namespace AptitudeEngine
                 Color.Red,
                 Color.Green,
                 Color.Blue,
-                Color.Yellow
+                Color.Yellow,
+                Color.Orange
             };
-            Draw.Quad();
+            Draw.Poly();
 
             //Finish and clean frame
             EndFrame();
