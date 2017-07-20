@@ -5,15 +5,25 @@ namespace AptitudeEngine
 {
     public class Camera
     {
-        private Vector2 Position;
-        private Matrix4 Projection;
+        public Vector2 Position
+        {
+            get;
+            set;
+        }
+        public Vector2 Size
+        {
+            get;
+            set;
+        }
+        public Matrix4 Projection;
 
         private bool enabled = false;
 
         public Camera(float width, float height, float x, float y)
         {
+            Size = new Vector2(width, height);
             Projection = Matrix4.CreateOrthographic(width, -height, 0, 100);
-            Position = new Vector2(x, -y);
+            Position = new Vector2(-x, -y);
         }
 
         public void SetPosition(Vector2 pos)
@@ -31,7 +41,7 @@ namespace AptitudeEngine
 
         public void Move(float x, float y)
         {
-            SetPosition(Position.X + x, Position.Y + y);
+            SetPosition(Position.X + -x, Position.Y + -y);
         }
 
         public void Start()
