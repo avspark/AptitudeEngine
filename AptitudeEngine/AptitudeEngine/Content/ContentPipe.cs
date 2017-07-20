@@ -5,11 +5,11 @@ using System.Drawing;
 
 using OpenTK.Graphics.OpenGL;
 
-namespace SolarEngine.Texture
+namespace AptitudeEngine
 {
-    public class ContentPipe
+    public static class ContentPipe
     {
-        public static Texture2D LoadTexture(string path)
+        public static Texture2D LoadTextureFromPath(string path)
         {
             if (!File.Exists(path))
             {
@@ -18,11 +18,11 @@ namespace SolarEngine.Texture
             }
             using (Bitmap bmp = new Bitmap(path))
             {
-                return LoadTextureFromBitmap(bmp);
+                return LoadTextureFromBitmap(bmp, Path.GetFileNameWithoutExtension(path));
             }
         }
 
-        public static Texture2D LoadTextureFromBitmap(Bitmap bmp)
+        public static Texture2D LoadTextureFromBitmap(Bitmap bmp, string bmpName)
         {
             int id = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, id);
@@ -47,7 +47,7 @@ namespace SolarEngine.Texture
             int w = bmp.Width;
             int h = bmp.Height;
             bmp.Dispose();
-            return new Texture2D(id, w, h);
+            return new Texture2D(id, w, h, bmpName);
         }
     }
 }

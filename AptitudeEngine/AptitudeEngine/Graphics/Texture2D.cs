@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SolarEngine.Texture
+namespace AptitudeEngine
 {
     public struct Texture2D
     {
@@ -21,11 +21,18 @@ namespace SolarEngine.Texture
             private set;
         }
 
-        public Texture2D(int id, int width, int height)
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        public Texture2D(int id, int width, int height, string name)
         {
             this.ID = id;
             this.Width = width;
             this.Height = height;
+            this.Name = name;
         }
     }
 }

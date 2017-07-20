@@ -65,6 +65,8 @@ namespace AptitudeEngine
             };
             Draw.Poly();
 
+            Draw.Tex(GraphicsHandler.GetTexture("tex1"), 50, 50, 100, 100);
+
             //Finish and clean frame
             EndFrame();
         }
